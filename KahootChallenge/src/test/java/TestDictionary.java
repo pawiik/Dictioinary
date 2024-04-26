@@ -35,7 +35,7 @@ public class TestDictionary {
         assert elements.contains("carpet");
 
         elements = dictionary.getElement("carp");
-        assert elements.contains("carp");
+        assert elements.contains("carpet");
 
         elements = dictionary.getElement("jav");
         assert elements.contains("java");
@@ -45,6 +45,6 @@ public class TestDictionary {
         assert elements.contains("internet");
 
         elements = dictionary.getElement("foo");
-        assert elements.contains("foo");
+        assert elements.isEmpty();
     }
 }
