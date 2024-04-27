@@ -57,9 +57,27 @@ public class DictionaryImpl implements Dictionary {
             current = current.children[index];
         }
 
-        result.add(found.toString());
+        // Perform DFS algorithm to collect all words starting with prefix
+        dfs(current, found, result);
 
         return result;
     }
 
+    private void dfs(TrieNode node, StringBuilder sb, List<String> result) {
+        if (node == null) {
+            return;
+        }
+        // We add the whole word to list when we reach last letter
+        if (node.isEndOfWord) {
+            result.add(sb.toString());
+        }
+        // For each letter in child table we are collecting words
+        for (char c = 'a'; c <= 'z'; c++) {
+            int index = c - 'a';
+            if (node.children[index] != null) {
+                sb.append(c);
+                dfs(node.children[index], sb, result);
+            }
+        }
+    }
 }
