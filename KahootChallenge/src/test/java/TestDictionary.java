@@ -6,6 +6,8 @@ import org.junit.jupiter.api.Test;
 import java.util.ArrayList;
 import java.util.List;
 
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
 
 public class TestDictionary {
 
@@ -23,28 +25,40 @@ public class TestDictionary {
     }
 
     @Test
-    void queryTest(){
-        List<String> elements = new ArrayList<>();
+    void cLetterTest() {
+        List<String> elements = dictionary.getElement("c");
 
-        elements = dictionary.getElement("c");
-        assert elements.contains("car");
-        assert elements.contains("carpet");
+        assertTrue(elements.contains("car"));
+        assertTrue(elements.contains("carpet"));
+    }
 
-        elements = dictionary.getElement("car");
-        assert elements.contains("car");
-        assert elements.contains("carpet");
+    @Test
+    void carTest() {
+        List<String> elements = dictionary.getElement("car");
 
-        elements = dictionary.getElement("carp");
-        assert elements.contains("carpet");
+        assertTrue(elements.contains("car"));
+        assertTrue(elements.contains("carpet"));
+    }
 
-        elements = dictionary.getElement("jav");
-        assert elements.contains("java");
-        assert elements.contains("javascript");
+    @Test
+    void carpTest() {
+        List<String> elements = dictionary.getElement("carp");
 
-        elements = dictionary.getElement("intern");
-        assert elements.contains("internet");
+        assertTrue(elements.contains("carpet"));
+    }
 
-        elements = dictionary.getElement("foo");
-        assert elements.isEmpty();
+    @Test
+    void javTest() {
+        List<String> elements = dictionary.getElement("jav");
+
+        assertTrue(elements.contains("java"));
+        assertTrue(elements.contains("javascript"));
+    }
+
+    @Test
+    void queryNonExistentTest() {
+        List<String> elements = dictionary.getElement("foo");
+
+        assertTrue(elements.isEmpty());
     }
 }
