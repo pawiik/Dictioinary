@@ -1,7 +1,7 @@
 package com.dabrowski.pawel;
 
+import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 public class DictionaryImpl implements Dictionary {
@@ -31,18 +31,21 @@ public class DictionaryImpl implements Dictionary {
         current.isEndOfWord = true;
     }
 
-    @Override
-    public void removeElement(String oldElement) {
-
-    }
 
     @Override
     public void addListOfElements(List<String> newElements) {
-
+        for (String newElement : newElements) {
+            addElement(newElement);
+        }
     }
 
     @Override
-    public List<String> getElement(String letters) {
+    public List<String> getElement(String letters) throws IllegalArgumentException {
+
+        if(letters.isEmpty()){
+            throw new IllegalArgumentException("Cannot pass empty String");
+        }
+
         List<String> result = new ArrayList<>();
         TrieNode current = root;
         StringBuilder found = new StringBuilder();
@@ -80,4 +83,15 @@ public class DictionaryImpl implements Dictionary {
             }
         }
     }
+
+    public void fillDictionary() {
+        List<String> elements = new ArrayList<>();
+        elements.add("car");
+        elements.add("carpet");
+        elements.add("java");
+        elements.add("javascript");
+        elements.add("internet");
+        this.addListOfElements(elements);
+    }
+
 }
