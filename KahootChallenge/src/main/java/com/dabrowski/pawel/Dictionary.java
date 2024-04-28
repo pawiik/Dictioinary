@@ -6,6 +6,6 @@ public interface Dictionary {
 
     void addElement(String newElement);
     void addListOfElements(List<String> newElements);
-    List<String> getElement(String letters) throws IllegalArgumentException;
+    List<String> getElements(String letters) throws IllegalArgumentException;
 
 }

@@ -28,7 +28,7 @@ public class TestDictionary {
 
     @Test
     void cLetterTest() {
-        List<String> elements = dictionary.getElement("c");
+        List<String> elements = dictionary.getElements("c");
         assertTrue(elements.contains("car"));
         assertTrue(elements.contains("carpet"));
         assertEquals(2, elements.size());
@@ -36,7 +36,7 @@ public class TestDictionary {
 
     @Test
     void carTest() {
-        List<String> elements = dictionary.getElement("car");
+        List<String> elements = dictionary.getElements("car");
         assertTrue(elements.contains("car"));
         assertTrue(elements.contains("carpet"));
         assertEquals(2, elements.size());
@@ -44,14 +44,14 @@ public class TestDictionary {
 
     @Test
     void carpTest() {
-        List<String> elements = dictionary.getElement("carp");
+        List<String> elements = dictionary.getElements("carp");
         assertTrue(elements.contains("carpet"));
         assertEquals(1, elements.size());
     }
 
     @Test
     void javTest() {
-        List<String> elements = dictionary.getElement("jav");
+        List<String> elements = dictionary.getElements("jav");
         assertTrue(elements.contains("java"));
         assertTrue(elements.contains("javascript"));
         assertEquals(2, elements.size());
@@ -59,14 +59,14 @@ public class TestDictionary {
 
     @Test
     void queryNonExistentTest() {
-        List<String> elements = dictionary.getElement("foo");
+        List<String> elements = dictionary.getElements("foo");
         assertTrue(elements.isEmpty());
         assertEquals(0, elements.size());
     }
 
     @Test
     void emptyStringTest(){
-        assertThrows(IllegalArgumentException.class, () -> dictionary.getElement(""));
+        assertThrows(IllegalArgumentException.class, () -> dictionary.getElements(""));
     }
 
     @Test

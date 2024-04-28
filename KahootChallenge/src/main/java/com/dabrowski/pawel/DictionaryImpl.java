@@ -50,7 +50,7 @@ public class DictionaryImpl implements Dictionary {
 
     // Method used to get list of words with passed prefix
     @Override
-    public List<String> getElement(String letters) throws IllegalArgumentException {
+    public List<String> getElements(String letters) throws IllegalArgumentException {
 
         if(letters.isEmpty()){
             throw new IllegalArgumentException("Prefix can't be empty");
