@@ -44,30 +44,31 @@ To use this dictionary implementation, follow these steps:
 
 Here's a simple example demonstrating the usage of this dictionary:
     
-    ```java
-    DictionaryImpl dictionary = new DictionaryImpl();
-    dictionary.addElement("apple");
-    dictionary.addElement("application");
-    dictionary.addElement("banana");
+```java
+DictionaryImpl dictionary = new DictionaryImpl();
+dictionary.addElement("apple");
+dictionary.addElement("application");
+dictionary.addElement("banana");
     
-    List<String> matchedWords = dictionary.getElement("app");
-    System.out.println("Words starting with 'app': " + matchedWords);
-    ```
+List<String> matchedWords = dictionary.getElement("app");
+System.out.println("Words starting with 'app': " + matchedWords);
+```
     
 Output: Words starting with 'app': [apple, application]
     
 ## Dependencies
     
 Required dependencies 
-    ```xml
-    <dependencies>
-        <dependency>
-            <groupId>org.junit.jupiter</groupId>
-            <artifactId>junit-jupiter-engine</artifactId>
-            <version>5.9.1</version>
-            <scope>test</scope>
-        </dependency>
-    </dependencies>
-    ```
+
+```xml
+<dependencies>
+    <dependency>
+        <groupId>org.junit.jupiter</groupId>
+        <artifactId>junit-jupiter-engine</artifactId>
+        <version>5.9.1</version>
+        <scope>test</scope>
+    </dependency>
+</dependencies>
+```
 
 
