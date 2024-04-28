@@ -1,6 +1,5 @@
 package com.dabrowski.pawel;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -20,6 +19,11 @@ public class DictionaryImpl implements Dictionary {
 
     @Override
     public void addElement(String newElement) {
+
+        if (newElement == null || newElement.isEmpty()) {
+            throw new IllegalArgumentException("Element can't be null or empty");
+        }
+
         TrieNode current = root;
         for (int i = 0; i < newElement.length(); i++) {
             int index = newElement.charAt(i) - 'a';
@@ -34,23 +38,29 @@ public class DictionaryImpl implements Dictionary {
 
     @Override
     public void addListOfElements(List<String> newElements) {
+
+        if(newElements.isEmpty()) {
+            throw new IllegalArgumentException("List of elements can't be empty");
+        }
+
         for (String newElement : newElements) {
             addElement(newElement);
         }
     }
 
+    // Method used to get list of words with passed prefix
     @Override
     public List<String> getElement(String letters) throws IllegalArgumentException {
 
         if(letters.isEmpty()){
-            throw new IllegalArgumentException("Cannot pass empty String");
+            throw new IllegalArgumentException("Prefix can't be empty");
         }
 
         List<String> result = new ArrayList<>();
         TrieNode current = root;
         StringBuilder found = new StringBuilder();
 
-        // We are checking all letters of the given word
+        // We are checking all letters of the given prefix
         for (char c : letters.toCharArray()) {
             int index = c - 'a';
             if (current.children[index] == null) {
@@ -66,6 +76,7 @@ public class DictionaryImpl implements Dictionary {
         return result;
     }
 
+    // DFS algorithm to find all words with passed prefix
     private void dfs(TrieNode node, StringBuilder sb, List<String> result) {
         if (node == null) {
             return;
@@ -84,6 +95,7 @@ public class DictionaryImpl implements Dictionary {
         }
     }
 
+    // Method created to fill dictionary with sample words
     public void fillDictionary() {
         List<String> elements = new ArrayList<>();
         elements.add("car");
