@@ -17,6 +17,7 @@ public class DictionaryImpl implements Dictionary {
         }
     }
 
+    // Method used to add single word to dictionary
     @Override
     public void addElement(String newElement) {
 
@@ -35,7 +36,7 @@ public class DictionaryImpl implements Dictionary {
         current.isEndOfWord = true;
     }
 
-
+    // Method used to add list of words to dictionary
     @Override
     public void addListOfElements(List<String> newElements) {
 
